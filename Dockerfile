@@ -1,7 +1,8 @@
 ARG PYTHON_VERSION="3.12"
-ARG SCRAPYD_VERSION="1.5.0"
 
 FROM python:${PYTHON_VERSION}-alpine
+
+ARG SCRAPYD_VERSION="1.5.0"
 RUN apk --no-cache add --virtual build-dependencies \
    gcc \
    musl-dev \
@@ -18,4 +19,4 @@ RUN apk --no-cache add --virtual build-dependencies \
    libxslt
 
 EXPOSE 6800
-ENTRYPOINT ["scrapyd", "--pidfile=", "-l", "-"]
+ENTRYPOINT ["scrapyd", "--pidfile="]
